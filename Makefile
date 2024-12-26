@@ -6,4 +6,4 @@ test:
 	podman run --rm mealies/curl-h3 curl -sIL https://www.drewbell.net --http3 -H 'user-agent: mozilla' | grep 'HTTP/3'
 
 build:
-	docker build -t mealies/curl-h3 .
+	podman build -t mealies/curl-h3 .
