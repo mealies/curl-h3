@@ -3,7 +3,7 @@ name: ci
 on:
   push:
     tags:
-      - '*'
+      - *
 
 env:
   DOCKERHUB_REPO: mealies/curl-h3
