@@ -7,13 +7,22 @@ RUN apk add --no-cache \
   build-base \
   cmake \
   git \
+  go \
   libpsl-dev \
   libtool \
   linux-headers \
+  musl-dev \
   nghttp2-dev \
   pkgconfig \
   wget \
   zlib-dev
+
+WORKDIR /usr/src/app
+RUN git clone https://github.com/mealies/httpstat \
+    && cd httpstat \
+    && go build . \
+    && cp httpstat /usr/local/bin \
+    && chmod +x /usr/local/bin/httpstat
 
 
 # https://curl.se/docs/http3.html
@@ -45,10 +54,14 @@ RUN cd .. \
     && export PKG_CONFIG_PATH=/usr/local/openssl/lib/pkgconfig:/usr/local/nghttp3/lib/pkgconfig:/usr/local/ngtcp2/lib/pkgconfig \
     && LDFLAGS="-Wl,-rpath,/usr/local/openssl/lib" ./configure -with-zlib --with-brotli --with-openssl=/usr/local/openssl --with-openssl-quic --with-nghttp3=/usr/local/nghttp3 \
     && make \
-    && make install
+    && make install 
+
+
+
 
 FROM alpine:3.21
 
+COPY --from=base /usr/local/bin/httpstat /usr/local/bin/httpstat
 COPY --from=base /usr/local/bin/curl /usr/local/bin/curl
 COPY --from=base /usr/local/lib/libcurl.so.4 /usr/local/lib/libcurl.so.4
 COPY --from=base /usr/local/nghttp3/lib/libnghttp3.so /usr/local/nghttp3/lib/libnghttp3.so.9
