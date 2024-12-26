@@ -1,7 +1,7 @@
 # curl-h3
 Container image for Curl with HTTP/3 and Brotli support
 
-# What is this?
+## What is this?
 Curl with HTTP/3 (using [openssl](https://github.com/openssl/openssl) & [nghttp3](https://github.com/ngtcp2/nghttp3)) and with [Brotli](https://github.com/google/brotli) support
 
 ```
@@ -15,14 +15,14 @@ Protocols: dict file ftp ftps gopher gophers http https imap imaps ipfs ipns mqt
 Features: alt-svc AsynchDNS brotli HSTS HTTP2 HTTP3 HTTPS-proxy IDN IPv6 Largefile libz NTLM PSL SSL threadsafe TLS-SRP UnixSockets
 ```
 
-# How to use this image
+## How to use this image
 ```
 podman pull mealies/curl-http3:latest
 
 podman run --rm mealies/curl-h3 curl -sIL https://www.drewbell.net -H 'user-agent: mozilla' 
 ```
 
-## Use --http3 flag to test HTTP/3 
+### Use --http3 flag to test HTTP/3 
 ```
 podman run --rm mealies/curl-h3 curl --http3 -sI https://www.google.com
 ```
@@ -44,3 +44,11 @@ set-cookie: __Secure-ENID=24.SE=Yvi_gg5awOLFCc21s3JezhOz5MKBCWIVGXTdCnWT9B1F-pZE
 alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
 ```
 
+
+### httpstat support
+
+Using go version of [httpstat](https://github.com/mealies/httpstat).  It doesn't yet support HTTP/3.
+
+`podman run  --rm mealies/curl-h3 httpstat -I -L  https://www.drewbell.net/`
+
+![](httpstat.png?raw=true "HTTPSTAT")
