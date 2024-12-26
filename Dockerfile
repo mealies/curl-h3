@@ -18,13 +18,14 @@ RUN apk add --no-cache \
 
 # https://curl.se/docs/http3.html
 # https://github.com/openssl/openssl/releases/tag/openssl-3.4.0
+# setting --libdir to make sure its lib for all architectures saves having to set
+# RUN cp -r /usr/local/openssl/lib64 /usr/local/openssl/lib 2>/dev/null || :
 RUN git clone --depth 1 -b openssl-3.4.0 https://github.com/openssl/openssl \
     && cd openssl \
-    && ./config enable-tls1_3 --prefix=/usr/local/openssl \
+    && ./config enable-tls1_3 --prefix=/usr/local/openssl --libdir=lib \
     && make \
     && make install
 
-RUN cp -r /usr/local/openssl/lib64 /usr/local/openssl/lib 2>/dev/null || :
 
 # https://github.com/ngtcp2/nghttp3/releases/tag/v1.7.0
 RUN cd .. \
