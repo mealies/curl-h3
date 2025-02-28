@@ -9,7 +9,7 @@ podman run --rm mealies/curl-h3:latest curl --version
 ```
 
 ```
-curl 8.11.1-DEV (aarch64-unknown-linux-musl) libcurl/8.11.1-DEV OpenSSL/3.4.0 zlib/1.3.1 brotli/1.1.0 libidn2/2.3.7 libpsl/0.21.5 nghttp2/1.64.0 nghttp3/1.7.0
+curl 8.12.1-DEV (aarch64-unknown-linux-musl) libcurl/8.12.1-DEV OpenSSL/3.4.0 zlib/1.3.1 brotli/1.1.0 libidn2/2.3.7 libpsl/0.21.5 nghttp2/1.64.0 nghttp3/1.7.0
 Release-Date: [unreleased]
 Protocols: dict file ftp ftps gopher gophers http https imap imaps ipfs ipns mqtt pop3 pop3s rtsp smb smbs smtp smtps telnet tftp ws wss
 Features: alt-svc AsynchDNS brotli HSTS HTTP2 HTTP3 HTTPS-proxy IDN IPv6 Largefile libz NTLM PSL SSL threadsafe TLS-SRP UnixSockets
