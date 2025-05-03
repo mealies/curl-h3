@@ -5,7 +5,7 @@ Container image for Curl with HTTP/3 and Brotli support
 Curl with HTTP/3 (using [openssl](https://github.com/openssl/openssl) & [nghttp3](https://github.com/ngtcp2/nghttp3)) and with [Brotli](https://github.com/google/brotli) support
 
 ```
-podman run --rm mealies/curl-h3:latest curl --version 
+docker run --rm mealies/curl-h3:latest curl --version 
 ```
 
 ```
@@ -17,14 +17,14 @@ Features: alt-svc AsynchDNS brotli HSTS HTTP2 HTTP3 HTTPS-proxy IDN IPv6 Largefi
 
 ## How to use this image
 ```
-podman pull mealies/curl-http3:latest
+docker pull mealies/curl-http3:latest
 
-podman run --rm mealies/curl-h3 curl -sIL https://www.drewbell.net -H 'user-agent: mozilla' 
+docker run --rm mealies/curl-h3 curl -sIL https://www.drewbell.net -H 'user-agent: mozilla' 
 ```
 
 ### Use --http3 flag to test HTTP/3 
 ```
-podman run --rm mealies/curl-h3 curl --http3 -sI https://www.google.com
+docker run --rm mealies/curl-h3 curl --http3 -sI https://www.google.com
 ```
 
 ```
@@ -49,6 +49,6 @@ alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
 
 Using go version of [httpstat](https://github.com/mealies/httpstat).  It doesn't yet support HTTP/3.
 
-`podman run  --rm mealies/curl-h3 httpstat -I -L  https://www.drewbell.net/`
+`docker run  --rm mealies/curl-h3 httpstat -I -L  https://www.drewbell.net/`
 
 ![](httpstat.png?raw=true "HTTPSTAT")
