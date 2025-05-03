@@ -1,4 +1,4 @@
-version = "curl 8.11.1"
+version = "curl 8.13.0"
 
 test:
 	docker run -t mealies/curl-h3 curl --version | grep $(version)

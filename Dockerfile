@@ -26,19 +26,19 @@ RUN git clone https://github.com/mealies/httpstat \
 
 
 # https://curl.se/docs/http3.html
-# https://github.com/openssl/openssl/releases/tag/openssl-3.4.0
+# https://github.com/openssl/openssl/releases/tag/openssl-3.5.0
 # setting --libdir to make sure its lib for all architectures saves having to set
 # RUN cp -r /usr/local/openssl/lib64 /usr/local/openssl/lib 2>/dev/null || :
-RUN git clone --depth 1 -b openssl-3.4.0 https://github.com/openssl/openssl \
+RUN git clone --depth 1 -b openssl-3.5.0 https://github.com/openssl/openssl \
     && cd openssl \
     && ./config enable-tls1_3 --prefix=/usr/local/openssl --libdir=lib \
     && make \
     && make install
 
 
-# https://github.com/ngtcp2/nghttp3/releases/tag/v1.7.0
+# https://github.com/ngtcp2/nghttp3/releases/tag/v1.9.0
 RUN cd .. \
-    && git clone --depth 1 -b v1.7.0 https://github.com/ngtcp2/nghttp3 \
+    && git clone --depth 1 -b v1.9.0 https://github.com/ngtcp2/nghttp3 \
     && cd nghttp3 \
     && git submodule update --init \
     && autoreconf -i \
@@ -46,9 +46,9 @@ RUN cd .. \
     && make \
     && make install
 
-# https://github.com/curl/curl/releases/tag/curl-8_11_1
+# https://github.com/curl/curl/releases/tag/curl-8_13_0
 RUN cd .. \
-    && git clone --depth 1 -b curl-8_12_1 https://github.com/curl/curl \
+    && git clone --depth 1 -b curl-8_13_0 https://github.com/curl/curl \
     && cd curl \
     && autoreconf -fi \
     && export PKG_CONFIG_PATH=/usr/local/openssl/lib/pkgconfig:/usr/local/nghttp3/lib/pkgconfig:/usr/local/ngtcp2/lib/pkgconfig \
