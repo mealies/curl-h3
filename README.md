@@ -47,8 +47,8 @@ alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
 
 ### httpstat support
 
-Using go version of [httpstat](https://github.com/mealies/httpstat).  It doesn't yet support HTTP/3.
+Using go version of [httpstat](https://github.com/mealies/httpstat).  It now supports HTTP/3.
 
-`docker run  --rm mealies/curl-h3 httpstat -I -L  https://www.drewbell.net/`
+`docker run  --rm mealies/curl-h3 httpstat -h3  https://www.drewbell.net/`
 
 ![](httpstat.png?raw=true "HTTPSTAT")
